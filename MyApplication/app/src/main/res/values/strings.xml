@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="facebook_app_id">1828101894173881</string>
+    <string name="title_activity_red">RedActivity</string>
+</resources>
