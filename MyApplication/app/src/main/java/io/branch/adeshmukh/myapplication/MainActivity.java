@@ -36,14 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onInitFinished(JSONObject referringParams, BranchError error) {
                 if (error == null) {
                     Log.v("data",referringParams.toString());
-                    Log.v("identity", String.valueOf(branch.isUserIdentified()));
-                    linkData = referringParams.toString();
-                    isIdentitySet = branch.isUserIdentified();
-                    mATxtView = (TextView)findViewById(R.id.main_activity_textview);
-                    mATxtView1 = (TextView)findViewById(R.id.main_activity_textview1);
-                    mATxtView.setText(linkData );
-                    mATxtView1.setText("UserIdentified: " + isIdentitySet);
-
 
                 } else {
                     Log.i("MyApp", error.getMessage());
@@ -72,20 +64,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-                    branch.setIdentity("abcde", new Branch.BranchReferralInitListener() {
-                        @Override
-                        public void onInitFinished(JSONObject referringParams, BranchError error) {
-                            if (error == null) {
-                                Log.e("TEST_TEST", "init success");
-                                String text = "Branch identity set to abcde";
-                                Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();
-                            } else {
-                                String text = "Branch identity set error";
-                                Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();
-                                Log.e("TEST_TEST", "set identity error: " + error.toString());
-                            }
-                        }
-                    });
+        
+        Intent i = new Intent(this, RedActivity.class);
+        startActivity(i);
 
 
     }
