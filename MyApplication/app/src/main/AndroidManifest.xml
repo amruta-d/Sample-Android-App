@@ -17,13 +17,12 @@
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <data
                     android:host="open"
-                    android:scheme="amrutademo" />
+                    android:scheme="demo" />
 
                 <action android:name="android.intent.action.VIEW" />
 
@@ -39,43 +38,19 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="amrutademo.app.link"
+                    android:host="demo.app.link"
                     android:scheme="https" />
                 <data
-                    android:host="amrutademo-alternate.app.link"
-                    android:scheme="https" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="arctictiger.app.link"
-                    android:scheme="https" />
-                <data
-                    android:host="amrutademo-alternate.app.link"
+                    android:host="demo-alternate.app.link"
                     android:scheme="https" />
             </intent-filter>
         </activity>
 
         <meta-data
             android:name="io.branch.sdk.BranchKey"
-            android:value="key_live_ofzxayHNMVwRWado4K6GzjcmAAgo0a2a" />
-         <!--<meta-data android:name="io.branch.sdk.BranchKey.test" -->
-        <!-- android:value="key_test_adEsnrMUKLwN3bpc0TW94jfhBEgf5a4u" /> -->
-         <meta-data android:name="io.branch.sdk.TestMode" android:value="true" />
-        <!-- <meta-data -->
-        <!-- android:name="com.facebook.sdk.ApplicationId" -->
-        <!-- android:value="@string/facebook_app_id" /> -->
-
-
-        <!-- <provider -->
-        <!-- android:name="com.facebook.FacebookContentProvider" -->
-        <!-- android:authorities="com.facebook.app.FacebookContentProvider1828101894173881" -->
-        <!-- android:exported="true" /> -->
-
+            android:value="key_live_<your_app_key>" />
+         <meta-data android:name="io.branch.sdk.TestMode" android:value="false" />
+ 
         <receiver
             android:name="io.branch.referral.InstallListener"
             android:exported="true">
