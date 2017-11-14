@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.v("data", referringParams.toString());
                     Log.v("identity", String.valueOf(branch.isUserIdentified()));
                     linkData = referringParams.toString();
+                    Log.v("data",referringParams.toString());
 
 
                     try {
@@ -148,7 +149,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.btn_1:
                 long millis = System.currentTimeMillis() % 1000;
