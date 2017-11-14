@@ -1,38 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/fab_margin"
     tools:context="io.branch.adeshmukh.myapplication.MainActivity">
 
     <TextView
         android:id="@+id/main_activity_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="Hello World!"
-        android:layout_marginTop="32dp"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        android:padding="16dp"/>
 
-    <TextView
-        android:layout_marginTop="32dp"
-        android:id="@+id/main_activity_textview1"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:layout_below="@id/main_activity_textview"
-        android:layout_centerHorizontal="true"
-        android:textSize="24sp"/>
+        android:id="@+id/btn_1"
+        android:text="login"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="64dp"
+        android:layout_margin="16dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_2"
+        android:text="logout"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="64dp"
+        android:layout_margin="16dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_3"
+        android:text="share link"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="64dp"
+        android:layout_margin="16dp"/>
 
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fb_button"
-        android:text="Set Identity"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="64dp"/>
+        android:id="@+id/btn_4"
+        android:text="fire event"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="64dp"
+        android:layout_margin="16dp"/>
 
-</RelativeLayout>
+</LinearLayout>

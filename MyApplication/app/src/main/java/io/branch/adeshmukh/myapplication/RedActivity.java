@@ -5,8 +5,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import io.branch.referral.Branch;
 
 public class RedActivity extends AppCompatActivity {
 
@@ -20,4 +23,11 @@ public class RedActivity extends AppCompatActivity {
         textView.setText("red");
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String data = Branch.getInstance().getLatestReferringParams().toString();
+
+        Log.v("link data",data);
+    }
 }

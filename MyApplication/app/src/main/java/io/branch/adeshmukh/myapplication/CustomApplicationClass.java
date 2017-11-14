@@ -17,6 +17,10 @@ public class CustomApplicationClass extends Application {
         super.onCreate();
         // initialize the Branch object
 //        Branch.enableTestMode();
+
+//        Branch.enableLogging();
+//        Branch.getInstance().setDebug();
+//        Branch.getAutoTestInstance(this);
         Branch.getAutoInstance(this);
     }
 }
