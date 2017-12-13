@@ -3,11 +3,7 @@ package io.branch.adeshmukh.myapplication;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,25 +12,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
-import io.branch.referral.SharingHelper;
-import io.branch.referral.util.CommerceEvent;
-import io.branch.referral.util.CurrencyType;
 import io.branch.referral.util.LinkProperties;
-import io.branch.referral.util.Product;
-import io.branch.referral.util.ProductCategory;
-import io.branch.referral.util.ShareSheetStyle;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -48,13 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-
         branch = Branch.getInstance();
-
-//        branch.setRetryInterval(1000000);
-//        branch.setRetryCount(100);
-
-//        branch.initSession(new MyListener(), this.getIntent().getData(), this)
         branch.initSession(new Branch.BranchReferralInitListener() {
             @Override
             public void onInitFinished(JSONObject referringParams, BranchError error) {
@@ -86,44 +63,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                    }
 
 
-//                    if(branch_link) {
-//                        branch.setIdentity("efgh");
-//                        branch.userCompletedAction("Registration Success");
-//                        Toast.makeText(getApplicationContext(), "Registration Success sent", Toast.LENGTH_SHORT).show();
-//
-//                        branch.loadRewards(new Branch.BranchReferralStateChangedListener() {
-//                            @Override
-//                            public void onStateChanged(boolean b, BranchError branchError) {
-//                                int credits = branch.getCredits();
-//                                Log.v("credits", Integer.toString(credits));
-//                                branch.userCompletedAction("AwardCredits");
-//                                Toast.makeText(getApplicationContext(), "AwardCredits sent", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//                    }
-
-
-//                    isIdentitySet = branch.isUserIdentified();
-
-
-//                    try{
-//
-//                        data = referringParams.getString("color");
-//                        if(data.equals("red")){
-////                            Intent intent = new Intent(MainActivity.this,RedActivity.class);
-////                            startActivity(intent);
-//                        }
-//                    } catch (Exception e){
-//
-//                    }
-
                 } else {
                     Log.i("MyApp", error.getMessage());
                 }
             }
         }, this.getIntent().getData(), this);
-
-
     }
 
 
@@ -381,101 +325,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         notificationManager.notify(0, n);
-    }
 
-//    private void test() {
-//        final String millis = Long.toString(System.currentTimeMillis() % 1000);
-//        Log.v("identity", millis);
-//        branch.setIdentity(millis, new Branch.BranchReferralInitListener() {
-//            @Override
-//            public void onInitFinished(JSONObject referringParams, BranchError error) {
-//                if (!millis.equalsIgnoreCase("")) {
-//                    branch.userCompletedAction("referAFriend");
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            branch.loadRewards(new Branch.BranchReferralStateChangedListener() {
-//                                @Override
-//                                public void onStateChanged(boolean changed, BranchError error) {
-//                                    if (error == null) {
-//                                        if (changed) {
-//                                            int credits = branch.getCredits();
-//                                            Log.e("credits", credits + "");
-//                                            branch.redeemRewards(credits, new Branch.BranchReferralStateChangedListener() {
-//                                                @Override
-//                                                public void onStateChanged(boolean changed, BranchError error) {
-//                                                    branch.logout(new Branch.LogoutStatusListener() {
-//                                                        @Override
-//                                                        public void onLogoutFinished(boolean loggedOut, BranchError error) {
-//                                                            if (loggedOut) {
-//                                                                Log.e("210", loggedOut + "");
-//                                                                if (!millis.equalsIgnoreCase("")) {
-//                                                                    Log.e("209", millis + "");
-//                                                                    branch.setIdentity(millis, new Branch.BranchReferralInitListener() {
-//                                                                        @Override
-//                                                                        public void onInitFinished(JSONObject referringParams, BranchError error) {
-//                                                                            Log.e("215", referringParams + "");
-//                                                                            if (referringParams.toString().equalsIgnoreCase("{}")) {
-//                                                                                Log.v("Signup", "signup completed successfully");
-//                                                                            } else {
-//                                                                                if (error == null) {
-//                                                                                    branch.loadRewards(new Branch.BranchReferralStateChangedListener() {
-//                                                                                        @Override
-//                                                                                        public void onStateChanged(boolean changed, BranchError error) {
-//                                                                                            if (error == null) {
-//                                                                                                if (changed) {
-//                                                                                                    int refreepoints = branch.getCredits();
-//                                                                                                    Log.e("refreepoints", refreepoints + "");
-//                                                                                                    branch.redeemRewards(refreepoints, new Branch.BranchReferralStateChangedListener() {
-//                                                                                                        @Override
-//                                                                                                        public void onStateChanged(boolean changed, BranchError error) {
-//                                                                                                            if (error == null) {
-//                                                                                                                if (changed) {
-//
-//                                                                                                                } else {
-//
-//                                                                                                                }
-//                                                                                                            } else {
-//                                                                                                                Log.e("255", "255");
-//                                                                                                            }
-//                                                                                                        }
-//                                                                                                    });
-//                                                                                                }
-//                                                                                            } else {
-//                                                                                                Log.e("265", error + "");
-//                                                                                                Log.v("Signup", "signup completed successfully");
-//                                                                                            }
-//                                                                                        }
-//                                                                                    });
-//                                                                                } else {
-//                                                                                    Log.e("268", error + "");
-//                                                                                }
-//                                                                            }
-//                                                                        }
-//                                                                    });
-//                                                                } else {
-//                                                                    Log.e("266", "error");
-//                                                                }
-//                                                            }
-//                                                        }
-//                                                    });
-//                                                }
-//                                            });
-//                                        } else {
-//                                            Log.e("271", error + "");
-//                                        }
-//                                    } else {
-//                                        Log.e("274", error + "");
-//                                    }
-//                                }
-//                            });
-//                        }
-//                    }, 10000);
-//                } else {
-//
-//                }
-//            }
-//        });
-//    }
+    }
 
 }
