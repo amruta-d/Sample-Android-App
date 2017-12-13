@@ -59,29 +59,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onInitFinished(JSONObject referringParams, BranchError error) {
                 if (error == null) {
+                    branch.logout();
                     Log.v("data", referringParams.toString());
-                    Log.v("identity", String.valueOf(branch.isUserIdentified()));
+//                    Log.v("identity", String.valueOf(branch.isUserIdentified()));
                     linkData = referringParams.toString();
                     Log.v("data",referringParams.toString());
 
 
-                    try {
+//                    try {
+////
+//                        branch_link = referringParams.getBoolean("+clicked_branch_link");
+//                        if(branch_link){
+//                            Intent intent = new Intent(MainActivity.this,RedActivity.class);
+//                            startActivity(intent);
+//                        } else {
+//                            System.out.println("not branch link");
+//                            Intent intent = new Intent(MainActivity.this,RedActivity.class);
+//                            startActivity(intent);
+//                        }
+
+
 //
-                        branch_link = referringParams.getBoolean("+clicked_branch_link");
-                        if(branch_link){
-                            Intent intent = new Intent(MainActivity.this,RedActivity.class);
-                            startActivity(intent);
-                        } else {
-                            System.out.println("not branch link");
-                            Intent intent = new Intent(MainActivity.this,RedActivity.class);
-                            startActivity(intent);
-                        }
-
-
-
-                    } catch (Exception e) {
-//
-                    }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+////
+//                    }
 
 
 //                    if(branch_link) {
@@ -159,6 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 branch.logout();
                 break;
             case R.id.btn_3:
+                branch.setIdentity("abc12");
                 final BranchUniversalObject branchUniversalObject = new BranchUniversalObject()
                         .setCanonicalIdentifier("/1234")
                         .setTitle("Test for referral")
@@ -172,48 +175,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setChannel("Facebook")
                         .setFeature("Sharing");
 
-                ShareSheetStyle ss = new ShareSheetStyle(MainActivity.this, "Check this out!", "This stuff is awesome: ")
-                .setCopyUrlStyle(ContextCompat.getDrawable(this, android.R.drawable.ic_menu_send), "Copy", "Added to clipboard")
-                .setMoreOptionStyle(ContextCompat.getDrawable(this, android.R.drawable.ic_menu_search), "Show more")
-                .addPreferredSharingOption(SharingHelper.SHARE_WITH.FACEBOOK)
-                .addPreferredSharingOption(SharingHelper.SHARE_WITH.EMAIL)
-                .addPreferredSharingOption(SharingHelper.SHARE_WITH.MESSAGE)
-                .addPreferredSharingOption(SharingHelper.SHARE_WITH.HANGOUT)
-                .setAsFullWidthStyle(true)
-                .setSharingTitle("Share With");
 
-        branchUniversalObject.showShareSheet(this, linkProperties,  ss,  new Branch.BranchLinkShareListener() {
-            @Override
-            public void onShareLinkDialogLaunched() {
-            }
-            @Override
-            public void onShareLinkDialogDismissed() {
-            }
-            @Override
-            public void onLinkShareResponse(String sharedLink, String sharedChannel, BranchError error) {
-            }
-            @Override
-            public void onChannelSelected(String channelName) {
-                linkProperties.setCampaign("testCamp");
-                branchUniversalObject.addContentMetadata("var3", "ghi")
-                        .addContentMetadata("var4","jkl");
-            }
-        });
 
-//                branchUniversalObject.generateShortUrl(this, linkProperties, new Branch.BranchLinkCreateListener() {
-//                    @Override
-//                    public void onLinkCreate(String url, BranchError error) {
-//                        if (error == null) {
-//
-//                            Log.v("url", url);
-//
-//                            Toast.makeText(MainActivity.this, url, Toast.LENGTH_LONG).show();
-//                        } else {
-//                            Log.v("url", url);
-//                        }
-//
-//                    }
-//                });
+
+
+//                ShareSheetStyle ss = new ShareSheetStyle(MainActivity.this, "Check this out!", "This stuff is awesome: ")
+//                .setCopyUrlStyle(ContextCompat.getDrawable(this, android.R.drawable.ic_menu_send), "Copy", "Added to clipboard")
+//                .setMoreOptionStyle(ContextCompat.getDrawable(this, android.R.drawable.ic_menu_search), "Show more")
+//                .addPreferredSharingOption(SharingHelper.SHARE_WITH.FACEBOOK)
+//                .addPreferredSharingOption(SharingHelper.SHARE_WITH.EMAIL)
+//                .addPreferredSharingOption(SharingHelper.SHARE_WITH.MESSAGE)
+//                .addPreferredSharingOption(SharingHelper.SHARE_WITH.HANGOUT)
+//                .setAsFullWidthStyle(true)
+//                .setSharingTitle("Share With");
+
+//        branchUniversalObject.showShareSheet(this, linkProperties,  ss,  new Branch.BranchLinkShareListener() {
+//            @Override
+//            public void onShareLinkDialogLaunched() {
+//            }
+//            @Override
+//            public void onShareLinkDialogDismissed() {
+//            }
+//            @Override
+//            public void onLinkShareResponse(String sharedLink, String sharedChannel, BranchError error) {
+//            }
+//            @Override
+//            public void onChannelSelected(String channelName) {
+//                linkProperties.setCampaign("testCamp");
+//                branchUniversalObject.addContentMetadata("var3", "ghi")
+//                        .addContentMetadata("var4","jkl");
+//            }
+//        });
+
+                branchUniversalObject.generateShortUrl(this, linkProperties, new Branch.BranchLinkCreateListener() {
+                    @Override
+                    public void onLinkCreate(String url, BranchError error) {
+                        if (error == null) {
+
+                            Log.v("url", url);
+
+                            Toast.makeText(MainActivity.this, url, Toast.LENGTH_LONG).show();
+                        } else {
+                            Log.v("url", url);
+                        }
+
+                    }
+                });
                 break;
             case R.id.btn_4:
                 createTestNotification();

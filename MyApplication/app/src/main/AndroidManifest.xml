@@ -23,7 +23,7 @@
             <intent-filter>
                 <data
                     android:host="open"
-                    android:scheme="amrutademo" />
+                    android:scheme="jombay" />
 
                 <action android:name="android.intent.action.VIEW" />
 
