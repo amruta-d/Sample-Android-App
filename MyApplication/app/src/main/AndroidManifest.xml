@@ -48,7 +48,7 @@
 
         <meta-data
             android:name="io.branch.sdk.BranchKey"
-            android:value="key_live_<your_app_key>" />
+            android:value="key_live_ofzxayHNMVwRWado4K6GzjcmAAgo0a2a" />
          <meta-data android:name="io.branch.sdk.TestMode" android:value="false" />
  
         <receiver
